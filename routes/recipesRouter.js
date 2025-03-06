@@ -5,5 +5,6 @@ const recipeRouter = Router()
 
 
 recipeRouter.get('/recipes', getAllRecipes)
+recipe
 
 export default recipeRouter
