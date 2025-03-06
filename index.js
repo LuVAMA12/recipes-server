@@ -6,6 +6,9 @@ import userRouter from './routes/usersRouter.js';
 const PORT = process.env.PORT || 7000
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded({extended : true}))
+
 app.use('/api', userRouter)
 
 connectDB()

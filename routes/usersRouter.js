@@ -1,18 +1,17 @@
 import { Router } from "express";
-import User from '../models/users.js';
+import { createUser, deleteUser, getAllUsers, getUserByID, updateUser } from "../controllers/usersController.js";
+import { VerifyUsersFields } from "../middlewares/verifyUserFields.js";
 
 const userRouter = Router()
 
-userRouter.get('/users', async (req, res) => {
-    try{
-        const users = await User.find()
-        if(!users.length < 1) {
-            return res.status(400).json({message:  'User not found'})
-        }
-        return res.status(200).json(users)
-    } catch(err) {
-        return res.status(400).json({message:  'Internal server error'})
-    }
-})
+
+userRouter.get('/users', getAllUsers)
+userRouter.get('/users/:id', getUserByID)
+
+userRouter.post('/users', VerifyUsersFields,createUser)
+
+userRouter.put('/users/:id', updateUser)
+
+userRouter.delete('/users/:id', deleteUser)
 
 export default userRouter
