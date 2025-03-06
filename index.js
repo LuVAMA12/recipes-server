@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import connectDB from './client/db.js';
+import recipeRouter from './routes/recipesRouter.js';
 import userRouter from './routes/usersRouter.js';
 
 const PORT = process.env.PORT || 7000
@@ -10,6 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 app.use('/api', userRouter)
+app.use('/api', recipeRouter)
 
 connectDB()
 
