@@ -6,12 +6,12 @@ const userRouter = Router()
 
 
 userRouter.get('/users', getAllUsers)
-userRouter.get('/users/:id', getUserByID)
+userRouter.get('/users/:id',getUserByID)
 
 userRouter.post('/users', VerifyUsersFields,createUser)
 
-userRouter.put('/users/:id', updateUser)
+userRouter.put('/users/:id',updateUser)
 
-userRouter.delete('/users/:id', deleteUser)
+userRouter.delete('/users/:id',deleteUser)
 
 export default userRouter

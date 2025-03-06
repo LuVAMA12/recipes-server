@@ -17,6 +17,9 @@ export const getUserByID =  async (req, res) => {
     const {id} = req.params
     try{
         const userByID = await User.findById(id)
+        if(!userByID) {
+            return res.status(400).json({message:  'User not found'})
+        }
         return res.status(200).json(userByID)
     } catch(err) {
         return res.status(400).json({message:  'Internal server error'})
@@ -39,6 +42,9 @@ export const updateUser = async (req, res) => {
     const {first_name, last_name, email, password}= req.body
     try {
         const userByID = await User.findByIdAndUpdate(id, req.body, {new: true})
+        if(!userByID) {
+            return res.status(400).json({message:  'User not found'})
+        }
         return res.status(200).json(userByID)
     } catch(err) {
         console.log(err)
@@ -53,6 +59,8 @@ export const deleteUser = async (req, res) => {
         const deleteUser = await User.findByIdAndDelete(id)
         if (deleteUser) {
             return res.status(204).json({message:  'User has been deleted'})
+        } else {
+            return res.status(400).json({message:  'User not found'})
         }
     } catch(err) {
         console.log(err)
