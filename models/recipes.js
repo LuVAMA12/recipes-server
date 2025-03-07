@@ -6,7 +6,7 @@ const recipeSchema = new Schema({
         required: true,
     },
     category:  {type:String,},
-    pays:{type:String,},
+    country:{type:String,},
     description : {type:String,},
     ingredients: [{type:String}],
     steps: [{type:String}],
