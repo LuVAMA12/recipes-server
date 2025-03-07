@@ -5,18 +5,14 @@ const recipeSchema = new Schema({
         type:String,
         required: true,
     },
+    category:  {type:String,},
+    pays:{type:String,},
+    description : {type:String,},
+    ingredients: [{type:String}],
+    steps: [{type:String}],
     author : {
-        type:String,
-        required: true,
+        type:mongoose.Schema.Types.ObjectId, ref:'User',
     },
-    ingredients: {
-        type: Array, 
-        required: true 
-    },
-    content: {
-        type: String,
-        required: true
-    }
 })
 
 export default mongoose.model('Recipe', recipeSchema)

@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { getAllRecipes } from "../controllers/recipesController.js";
+import { createNewRecipe, deleteRecipe, getAllRecipes, getRecipeByID, updateRecipe } from "../controllers/recipesController.js";
 
-const recipeRouter = Router()
+const recipesRouter = Router()
 
 
-recipeRouter.get('/recipes', getAllRecipes)
-recipe
-
-export default recipeRouter
+recipesRouter.get('/recipes', getAllRecipes)
+recipesRouter.get('/recipes/:id', getRecipeByID )
+recipesRouter.post('/recipes', createNewRecipe)
+recipesRouter.put('/recipes/:id', updateRecipe)
+recipesRouter.delete('/recipes/:id', deleteRecipe)
+export default recipesRouter
