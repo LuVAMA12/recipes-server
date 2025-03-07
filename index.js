@@ -1,6 +1,8 @@
+import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
 import connectDB from './client/db.js';
+import authRouter from './routes/authRouter.js';
 import recipesRouter from './routes/recipesRouter.js';
 import userRouter from './routes/usersRouter.js';
 
@@ -9,8 +11,9 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
+app.use(cors())
 
-app.use('/api', userRouter, recipesRouter)
+app.use('/api', userRouter, recipesRouter, authRouter)
 
 connectDB()
 
