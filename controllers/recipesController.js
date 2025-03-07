@@ -15,7 +15,7 @@ export const getAllRecipes = async (req, res) => {
 export const getRecipeByID = async (req, res) => {
     const {id} = req.params
     try {
-        const recipeByID = await Recipe.findById(id)
+        const recipeByID = await Recipe.findById(id).populate('author')
         if(!recipeByID){
             return res.status(400).json({message: "Recipe not found"}) 
         }
